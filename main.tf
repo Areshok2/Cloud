@@ -11,8 +11,8 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-resource "aws_dynamodb_table" "this" {
-  name         = "example"
+resource "aws_dynamodb_table" "table" {
+  name         = "areshok"
   hash_key     = "id"
   billing_mode = "PAY_PER_REQUEST"
 
