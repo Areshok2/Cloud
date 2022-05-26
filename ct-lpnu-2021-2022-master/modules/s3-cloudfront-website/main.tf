@@ -35,10 +35,16 @@ module "labels" {
 
 resource "aws_s3_bucket" "this" {
   bucket = local.domain_name
-  acl    = "private"
+  # acl    = "private"
   /* region        = data.aws_region.current.name */
   force_destroy = true
   tags          = module.labels.tags
+}
+
+
+resource "aws_s3_bucket_acl" "this" {
+  bucket = aws_s3_bucket.this.id
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_policy" "this" {

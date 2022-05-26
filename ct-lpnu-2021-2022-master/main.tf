@@ -22,7 +22,7 @@ module "frontend" {
   source                         = "./modules/s3-cloudfront-website"
   context                        = module.base_labels.context
   name                           = "frontend"
-  domain_name                    = "dev.cloudtechnologies.lpnu.ua"
+  domain_name                    = "dev.areshok.lpnu.ua"
   website_cloudfront_min_ttl     = "300"
   website_cloudfront_default_ttl = "300"
   website_cloudfront_max_ttl     = "300"

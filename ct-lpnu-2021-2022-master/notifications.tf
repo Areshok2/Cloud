@@ -19,13 +19,16 @@ module "notify_slack" {
 resource "aws_sns_topic_subscription" "email" {
   topic_arn = module.notify_slack.slack_topic_arn
   protocol  = "email"
-  endpoint  = "anton.k.shakh@lpnu.ua"
+  # endpoint  = "yrameda0404@gmail.com"
+  endpoint  = var.sns_topic_subscription_email
+  
 }
 
 resource "aws_cloudwatch_log_metric_filter" "this" {
   name           = module.notification_label.id
   pattern        = "?ERROR ?WARN ?5xx"
-  log_group_name = "/aws/lambda/${module.lambda.get_all_courses_lambda_function_name}"
+  log_group_name = "/aws/lambda/${module.lambda.get_all_authors_lambda_function_name}"
+  # log_group_name = module.lambda.get_all_authors_lambda_cloudwatch_log_group_name
 
   metric_transformation {
     name      = module.notification_label.id
@@ -43,7 +46,7 @@ resource "aws_cloudwatch_metric_alarm" "this" {
   period              = "60"
   statistic           = "Sum"
   threshold           = "1"
-  alarm_description   = "This metric monitors ${module.lambda.get_all_courses_lambda_function_name}"
+  alarm_description   = "This metric monitors ${module.lambda.get_all_authors_lambda_function_name}"
   treat_missing_data  = "notBreaching"
   alarm_actions       = [module.notify_slack.slack_topic_arn]
 }
