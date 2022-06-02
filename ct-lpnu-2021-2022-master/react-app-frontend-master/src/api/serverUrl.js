@@ -1,1 +1,1 @@
-export default "<https://p8ydm9rarh.execute-api.eu-central-1.amazonaws.com/dev>";
+export default "https://gixxu52zgk.execute-api.eu-central-1.amazonaws.com/dev";

@@ -17,3 +17,6 @@ output "get_all_authors_lambda_function_name" {
 output "get_all_authors_lambda_cloudwatch_log_group_name" {
   value = module.lambda_function_get_all_authors.lambda_cloudwatch_log_group_name
 }
+output "get_all_authors_invoke_arn" {
+  value = module.lambda_function_get_all_authors.lambda_function_invoke_arn
+}
